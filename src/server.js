@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import allRoutes from "./routes/index.js";
+import connectDB from "./config/databaseMongoose.js";
 import cors from "cors";
 import path from "path";
 import morgan from "morgan";
@@ -11,6 +12,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 dotenv.config();
+connectDB()
 const app = express();
 
 app.use("/public", express.static(path.join(__dirname, "uploads")));
